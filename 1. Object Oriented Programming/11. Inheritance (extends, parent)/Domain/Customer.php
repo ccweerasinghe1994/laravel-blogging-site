@@ -8,12 +8,16 @@ namespace BoookStore\Domain;
 // public access by the outside
 
 
-class Customer
+use BookStore\Domain\Person;
+
+require_once __DIR__.'/Person.php';
+
+class Customer extends Person
 {
     private static $lastId = 0;
     private $id;
-    private $customer_name;
-    private $email;
+//    private $customer_name;
+//    private $email;
     private $serName;
 
     /**
@@ -25,6 +29,7 @@ class Customer
      */
     public function __construct($id, $customer_name, $email, $serName)
     {
+        parent::__construct( $customer_name, $email);
 //        $this->id = $id;
         if ($id == null) {
             $this->id = ++self::$lastId;
